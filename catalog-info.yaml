@@ -20,20 +20,6 @@ metadata:
     - url: https://axon.slack.com/archives/CN4QKSXB8
       title: IRS Slack Channel
 spec:
-  type: service
+  type: website
   owner: trx-transcription-squad
   lifecycle: production
-  dependsOn: 
-  - component:audit
-  - component:blob
-  - component:dex
-  - component:dredd
-  - component:komrade
-  - component:sage
-  - component:workflow
-  - component:zippy
-  - resource:activemq
-  - resource:kafka
-  - resource:mysql
-  - resource:redis
-  - resource:azure-service-bus
