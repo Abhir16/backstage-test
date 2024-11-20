@@ -7,7 +7,7 @@ metadata:
   annotations:
     backstage.io/source-location: url:https://git.taservs.net/rcom/iris
     backstage.io/techdocs-ref: dir:.
-    opsgenie.com/team: Auto-Transcribe
+    opsgenie.com/team: RMS Incident Squad
   links:
     - url: https://teamcity.taservs.net/project/KubernetesServices_Rms_IrisV2_2
       title: Iris Builds
@@ -20,6 +20,17 @@ metadata:
     - url: https://axon.slack.com/archives/CN4QKSXB8
       title: IRS Slack Channel
 spec:
-  type: website
-  owner: trx-transcription-squad
+  type: service
+  owner: rms-incident-response-squad
   lifecycle: production
+  dependsOn:
+  - component:audit
+  - component:blob
+  - component:hermes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  type: website
+  name: iris
+  title: Iris
