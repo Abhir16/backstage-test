@@ -1,29 +1,60 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: iris
-  title: Iris
-  description: RMS Front end
+  name: sonic
+  title: Sonic
+  description: Auto-Transcription services
   annotations:
-    backstage.io/source-location: url:https://git.taservs.net/rcom/iris
+    backstage.io/source-location: url:https://git.taservs.net/axon-research/sonic
     backstage.io/techdocs-ref: dir:.
-    opsgenie.com/team: RMS Incident Squad
+    opsgenie.com/team: Auto-Transcribe
   links:
-    - url: https://teamcity.taservs.net/project/KubernetesServices_Rms_IrisV2_2
-      title: Iris Builds
-    - url: https://git.taservs.net/ops/argo-apps/tree/master/rms/frontend/base/iris
+    - url: https://teamcity.taservs.net/project/KubernetesServices_Ecom_Sonic
+      title: Sonic Builds
+    - url: https://git.taservs.net/ops/argo-apps/tree/master/transcription
       title: Argo Apps
-    - url: https://grafana-global.farm.va.main.ag1.axon.us/d/8fdf7b8e3/rms-incident-squad-dashboard
-      title: RMS Incident Squad Grafana Dashboard
-    - url: https://axon.quip.com/v0YUAbtjSIB1/RMS-Incident-Squad-On-Call-Runbook
-      title: Incident On-call Runbook
-    - url: https://axon.slack.com/archives/CN4QKSXB8
-      title: IRS Slack Channel
+    - url: https://git.taservs.net/axon-research/sonic/wiki/Sonic-Runbook
+      title: Sonic Run Book
+    - url: https://grafana-global.farm.va.main.ag1.axon.us/d/trx-dashboard2/trx-auto-transcription-sonic?orgId=1&refresh=1m&var-DataSource=cortex-us1&var-axon_cluster=All&var-spoke=main
+      title: Auto-transcription Grafana Dashboard
+    - url: https://grafana-global.farm.va.main.ag1.axon.us/d/trx-resources/trx-resources-auto-transcription-and-draft-one?orgId=1&refresh=1m&var-DataSource=cortex-us1&var-axon_cluster=All&var-spoke=main
+      title: Auto-transcription Resource Grafana Dashboard
+    - url: https://grafana-global.farm.va.main.ag1.axon.us/d/trx-reports/1507e488-e035-5365-88f6-ec90561a8994?orgId=1&refresh=1m&var-DataSource=cortex-us1&var-axon_cluster=All&var-spoke=main
+      title: Auto-transcription Reporting Grafana Dashboard
+    - url: https://grafana-global.farm.va.main.ag1.axon.us/d/trx-testing/trx-testing-test-results-for-trx-features?orgId=1&refresh=1m&var-DataSource=cortex-us1&var-axon_cluster=All&var-spoke=main
+      title: Auto-transcription Testing Grafana Dashboard
 spec:
   type: service
-  owner: rms-incident-response-squad
+  owner: trx-transcription-squad
   lifecycle: production
-  dependsOn:
+  dependsOn: 
   - component:audit
   - component:blob
-  - component:hermes
+  - component:dex
+  - component:dredd
+  - component:komrade
+  - component:sage
+  - component:workflow
+  - component:zippy
+  - resource:activemq
+  - resource:kafka
+  - resource:mysql
+  - resource:redis
+  - resource:azure-service-bus
+  consumesApis:
+    - arsenal-api
+  provideApis:
+    - sonic-api
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: sonic-api
+  title: Sonic Service API
+  backstage.io/source-location: url:https://git.taservs.net/ecom/service-proto/tree/master/sonic-proto
+spec:
+  type: proto
+  lifecycle: production
+  owner: trx-transcription-squad
+  definition:
+    $text: https://git.taservs.net/ecom/service-proto/blob/master/sonic-proto/src/main/proto/sonic.proto
