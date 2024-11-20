@@ -1,0 +1,35 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: iris
+  title: Iris
+  description: RMS Front end
+  annotations:
+    backstage.io/source-location: url:https://git.taservs.net/rcom/iris
+    backstage.io/techdocs-ref: dir:.
+    opsgenie.com/team: RMS Incident Squad
+  links:
+    - url: https://teamcity.taservs.net/project/KubernetesServices_Rms_IrisV2_2
+      title: Iris Builds
+    - url: https://git.taservs.net/ops/argo-apps/tree/master/rms/frontend/base/iris
+      title: Argo Apps
+    - url: https://grafana-global.farm.va.main.ag1.axon.us/d/8fdf7b8e3/rms-incident-squad-dashboard
+      title: RMS Incident Squad Grafana Dashboard
+    - url: https://axon.quip.com/v0YUAbtjSIB1/RMS-Incident-Squad-On-Call-Runbook
+      title: Incident On-call Runbook
+    - url: https://axon.slack.com/archives/CN4QKSXB8
+      title: IRS Slack Channel
+spec:
+  type: service
+  owner: rms-incident-response-squad
+  lifecycle: production
+  dependsOn:
+  - component:audit
+  - component:blob
+  - component:hermes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: iris
+  title: Iris
