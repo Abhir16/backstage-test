@@ -7,7 +7,7 @@ metadata:
   annotations:
     backstage.io/source-location: url:https://git.taservs.net/rcom/iris
     backstage.io/techdocs-ref: dir:.
-    opsgenie.com/team: RMS Incident Squad
+    opsgenie.com/team: rms_incident_squad
   links:
     - url: https://teamcity.taservs.net/project/KubernetesServices_Rms_IrisV2_2
       title: Iris Builds
