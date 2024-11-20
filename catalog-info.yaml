@@ -26,6 +26,21 @@ spec:
   dependsOn: 
   - component:audit
   - component:blob
+  - component:dex
+  - component:dredd
+  - component:komrade
+  - component:sage
+  - component:workflow
+  - component:zippy
+  - resource:activemq
+  - resource:kafka
+  - resource:mysql
+  - resource:redis
+  - resource:azure-service-bus
+  consumesApis:
+    - arsenal-api
+  provideApis:
+    - sonic-api
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
