@@ -44,3 +44,13 @@ spec:
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
+metadata:
+  name: sonic-api
+  title: Sonic Service API
+  backstage.io/source-location: url:https://git.taservs.net/ecom/service-proto/tree/master/sonic-proto
+spec:
+  type: proto
+  lifecycle: production
+  owner: trx-transcription-squad
+  definition:
+    $text: https://git.taservs.net/ecom/service-proto/blob/master/sonic-proto/src/main/proto/sonic.proto
