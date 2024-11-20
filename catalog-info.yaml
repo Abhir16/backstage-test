@@ -27,9 +27,3 @@ spec:
   - component:audit
   - component:blob
   - component:hermes
----
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: iris
-  title: Iris
