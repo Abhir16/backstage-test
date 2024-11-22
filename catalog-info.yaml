@@ -31,3 +31,10 @@ spec:
     - component:rq
     - component:ugp
     - component:komrade
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  type: component
+  name: hermes
+  title: Iris
